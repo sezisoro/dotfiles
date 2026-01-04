@@ -9,6 +9,12 @@ function include() {
 include $ZDOTDIR/.zlogin
 
 # Plugins {{{
+# Autocomplete from History
+include $ZSH_CUSTOM/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
+
+# Better command script highlighting
+include $ZSH_CUSTOM/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
+
 #autoload -U history-pattern-search
 autoload -U add-zsh-hook
 

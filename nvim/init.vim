@@ -29,16 +29,21 @@ if empty(glob('~/.config/nvim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.config/nvim/plugged')
+Plug 'deoplete-plugins/deoplete-clang'
 Plug 'edkolev/tmuxline.vim'
+Plug 'mbbill/undotree'
 Plug 'morhetz/gruvbox'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope-file-browser.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'prabirshrestha/asyncomplete-emoji.vim'
+Plug 'prabirshrestha/asyncomplete-file.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/vim-lsp'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-syntastic/syntastic'
-Plug 'prabirshrestha/vim-lsp'
-Plug 'prabirshrestha/asyncomplete.vim'
-Plug 'prabirshrestha/asyncomplete-lsp.vim'
-Plug 'prabirshrestha/asyncomplete-file.vim'
-Plug 'prabirshrestha/asyncomplete-emoji.vim'
 call plug#end()
 " }}}
 
@@ -197,6 +202,7 @@ set nu
 " }}}
 
 " {{{ Keyboard Mapping
+:let mapleader = ","
 
 " map control-backspace to delete the previous word
 imap <C-BS> <C-W>
@@ -220,7 +226,16 @@ nnoremap <F4> :LspReferences<CR>
 " Tab Completion
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
+inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<CR>"
+
+"Telescope
+nnoremap <leader>ff <cmd>Telescope find_files<CR>
+nnoremap <leader>fg <cmd>Telescope live_grep<CR>
+nnoremap <leader>fb <cmd>Telescope buffers<CR>
+nnoremap <leader>fh <cmd>Telescope help_tags<CR>
+
+" UndoTree
+nnoremap <F5> <cmd>UndotreeToggle<CR>
 " }}}
 
 " File explorer {{{
