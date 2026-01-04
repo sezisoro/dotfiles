@@ -1,6 +1,7 @@
 export EDITOR=nvim
-export VISUAL=nvim
+export GTK_THEME=Numix
 export LC_TYPE=en_US.UTF-8
+export VISUAL=nvim
 export XDG_CONFIG_HOME="$HOME/.config"
 export ZDOTDIR=$(readlink -f "$HOME/.config/zsh/")
 export ZSH_CUSTOM=$(readlink -f "$HOME/.config/zsh/custom/")

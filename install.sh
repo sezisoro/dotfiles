@@ -20,9 +20,9 @@ function link-folder () {
 link-folder("zsh")
 
 # Redirect ZSH to use new config file location
-ln -s $WD/zsh/.zshenv $HOME
+ln -s $WD/zsh/.zshenv $HOME/.zshenv
 
-## RXVT-Unicode
+## terminal
 # Apply key mappings
 ln -s $WD/inputrc $HOME/.inputrc
 # Apply colorscheme
