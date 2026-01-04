@@ -93,7 +93,6 @@ fi
 # }}}
 
 # Aliases {{{
-#
 # For a full list of active aliases, run `alias`.
 alias clr="clear"
 alias e="nvim"
@@ -103,6 +102,8 @@ alias sudo="sudo -E "
 alias tm="tmux -f ~/.config/tmux/tmux.conf -2"
 alias tma="tmux attach-session"
 alias tmh="cat ~/.config/tmux/tmux.help"
+
+hash -d obsidian=/Users/sezisoro/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/
 # }}}
 
 # Theming {{{
