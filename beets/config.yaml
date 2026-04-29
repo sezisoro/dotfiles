@@ -1,0 +1,28 @@
+library: /seere-block-1/music/beets_library.db
+directory: /seere-block-1/music/library
+move: yes
+plugins: musicbrainz inline convert web edit
+item_fields:
+  path_artist: |
+    if albumartist:
+      return albumartist
+    elif label:
+      return label
+    else:
+      return artist
+paths:
+  default: $path_artist/$album%aunique{}/$track $title
+  singleton: $path_artist/$title
+  comp: $path_artist/$album%aunique{}/$track $title
+convert:
+  never_convert_lossy_files: yes
+  auto: yes
+  format: aiff
+  formats:
+    aiff:
+      #command: ffmpeg -i $source -ar 44100 -sample_fmt s16 -y -acodec pcm_s16be $dest
+      command: ffmpeg -i $source -ar 44100 -sample_fmt s16 -y $dest
+      extension: aiff
+    mp3:
+      command: ffmpeg -i $source -y -vn -b:a 320k $dest
+      extension: mp3

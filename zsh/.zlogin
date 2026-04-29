@@ -21,5 +21,5 @@ if [[ -z "$TMUX" ]]; then
     tmux attach-session -t lo_tmux || tmux new-session -s lo_tmux
   fi
 else
-  cat ~/.config/tmux/tmux.help
+  #cat ~/.config/tmux/tmux.help
 fi
