@@ -2,20 +2,30 @@
 
 # Custom Helper Functions {{{
 function include() {
+  # TODO(sez): extra args to auto-download? Or leave in dotfiles helper script?
   [[ -f "$1" ]] && source "$1"
 }
 # }}}
 
+include $XDG_CONFIG_HOME/work/workrc
 include $ZDOTDIR/.zlogin
+
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/workspace/dotfiles/zsh/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
 
 # Plugins {{{
 # Autocomplete from History
 include $ZSH_CUSTOM/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=8,underline"
 
 # Better command script highlighting
 include $ZSH_CUSTOM/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 
-#autoload -U history-pattern-search
+autoload -U history-pattern-search
 autoload -U add-zsh-hook
 
 # Enable Ctrl-x-e to edit command line
@@ -52,21 +62,31 @@ key[PageDown]=${terminfo[knp]}
 [[ -n "${key[End]}"      ]]  && bindkey  "${key[End]}"      end-of-line
 [[ -n "${key[Insert]}"   ]]  && bindkey  "${key[Insert]}"   overwrite-mode
 [[ -n "${key[Delete]}"   ]]  && bindkey  "${key[Delete]}"   delete-char
-#[[ -n "${key[Up]}"       ]]  && bindkey  "${key[Up]}"       up-line-or-history
-#[[ -n "${key[Down]}"     ]]  && bindkey  "${key[Down]}"     down-line-or-history
+[[ -n "${key[Up]}"       ]]  && bindkey  "${key[Up]}"       up-line-or-history
+[[ -n "${key[Down]}"     ]]  && bindkey  "${key[Down]}"     down-line-or-history
 [[ -n "${key[Left]}"     ]]  && bindkey  "${key[Left]}"     backward-char
 [[ -n "${key[Right]}"    ]]  && bindkey  "${key[Right]}"    forward-char
 #[[ -n "${key[PageUp]}"   ]]  && bindkey  "${key[PageUp]}"   beginning-of-buffer-or-history
 #[[ -n "${key[PageDown]}" ]]  && bindkey  "${key[PageDown]}" end-of-buffer-or-history
 
 local WORDCHARS="${WORDCHARS:s#/#}"
+# Simple line editing
 bindkey '^[[1;5D'   backward-word         # <C-Left>
 bindkey '^[[1;5C'   forward-word          # <C-Right>
-bindkey ''        backward-delete-word  # <C-backspace>
+bindkey '^H'        backward-delete-word  # <C-backspace>
 bindkey '^[[3;5~'   delete-word           # <C-del>
-# Broken!
-#bindkey '<M-BS>'    backward-kill-line    # <M-backspace>
-bindkey '^[^[[3~'   kill-line             # <M-del>
+bindkey '^[[1;3D'   backward-word         # <A-Left>
+#bindkey '^[[1;3C'   forward-word          # <A-Right>
+#bindkey '<M-Left>'  backward-word         # <A-Left>
+#bindkey '<M-Right>' forward-word          # <A-Right>
+#bindkey '^[H'   backward-delete-word  # <A-backspace>
+#bindkey '^[[3;3~'   delete-word           # <A-del>
+bindkey '^[^H'      backward-kill-line    # <C-A-backspace>
+bindkey '^[[3;7~'   kill-line             # <C-A-del>
+
+# History
+bindkey -M viins '^R' history-incremental-pattern-search-backward
+bindkey -M viins '^F' history-incremental-pattern-search-forward
 
 bindkey '^x^e' edit-command-line          # <C-x><C-e>
 
@@ -93,19 +113,48 @@ fi
 # }}}
 
 # Aliases {{{
+#
+# Set of aliased commands
 # For a full list of active aliases, run `alias`.
 alias clr="clear"
 alias e="nvim"
-alias ls="ls --color=auto"
+alias ls="ls --color"
 alias oct="octave --no-gui"
 alias sudo="sudo -E "
 alias tm="tmux -f ~/.config/tmux/tmux.conf -2"
 alias tma="tmux attach-session"
 alias tmh="cat ~/.config/tmux/tmux.help"
 
-hash -d obsidian=/Users/sezisoro/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/
+# Mercurial
+alias hga="hg add"
+alias hgcc="hg citc"
+alias hgcl-mod="hg amend"
+alias hgcl-new="hg commit"
+alias hgcl-up="hg uploadchain"
+alias hgcl-rm="hg cls-drop -p"
+alias hgs="hg status"
+alias hgup="hg update"
+alias hgx="hg xl"
+
+# TaskWarrior
+alias ta="task add"
+alias tdel="task delete"
+alias tdo="task done"
+alias tl="task list"
+alias tmod="task modify"
+alias tst="task start"
+alias tsyn="task sync"
+
+# Beets
+alias bl="beet list -f '\$albumartist: \$album -- \$path'"
+alias bi="beet import -t"
+
+# https://sw.kovidgoyal.net/kitty/faq.html#id4
+alias ssh="kitty +kitten ssh"
 # }}}
 
 # Theming {{{
-include $ZSH_CUSTOM/home.zsh-theme
+include $ZSH_CUSTOM/plugins/powerlevel10k/powerlevel10k.zsh-theme
+# To customize prompt, run `p10k configure` or edit ~/workspace/dotfiles/zsh/.p10k.zsh.
+include ~/workspace/dotfiles/zsh/.p10k.zsh
 # }}}
