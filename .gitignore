@@ -5,6 +5,8 @@
 # *.[oa]
 # *~
 
+.DS_Store
+*/.DS_Store
 i3/i3blocks-contrib
 i3/i3blocks-contrib/*
 nvim/plugged
@@ -13,6 +15,8 @@ nvim/autoload
 nvim/autoload/*
 nvim/.netrwhist
 zsh/.zcomp*
+zsh/.zsh_history
+zsh/.zsh_sessions*
 zsh/.p10k.zsh
 zsh/custom/plugins
 zsh/custom/work.zsh-theme

@@ -3,6 +3,8 @@
 # local session for opening terminals on-device, and another that will always
 # open if connection remotely.
 
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 # TODO: come up with a clever way to case on being inside IntelliJ
 # IDEA=$(pgrep -x idea.sh)
 
