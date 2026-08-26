@@ -76,11 +76,6 @@ bindkey '^[[1;5C'   forward-word          # <C-Right>
 bindkey '^H'        backward-delete-word  # <C-backspace>
 bindkey '^[[3;5~'   delete-word           # <C-del>
 bindkey '^[[1;3D'   backward-word         # <A-Left>
-#bindkey '^[[1;3C'   forward-word          # <A-Right>
-#bindkey '<M-Left>'  backward-word         # <A-Left>
-#bindkey '<M-Right>' forward-word          # <A-Right>
-#bindkey '^[H'   backward-delete-word  # <A-backspace>
-#bindkey '^[[3;3~'   delete-word           # <A-del>
 bindkey '^[^H'      backward-kill-line    # <C-A-backspace>
 bindkey '^[[3;7~'   kill-line             # <C-A-del>
 
@@ -116,6 +111,10 @@ fi
 #
 # Set of aliased commands
 # For a full list of active aliases, run `alias`.
+alias ls="ls -F"
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
 alias clr="clear"
 alias e="nvim"
 alias ls="ls --color"
