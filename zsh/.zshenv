@@ -8,3 +8,4 @@ export ZDOTDIR=$(readlink -f "$HOME/.config/zsh/")
 export ZSH_CUSTOM=$(readlink -f "$HOME/.config/zsh/custom/")
 export HISTFILE=$(readlink -f "$HOME/.cache/zsh/zhistory")
 export FZF_DEFAULT_OPTS='--height 20% --border' # decorates fzf search window with a border, and make the search box 20% high
+export PATH=$PATH:/Users/sezisoro/.local/bin

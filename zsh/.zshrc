@@ -149,12 +149,12 @@ alias tsyn="task sync"
 alias bl="beet list -f '\$albumartist: \$album -- \$path'"
 alias bi="beet import -t"
 
-# https://sw.kovidgoyal.net/kitty/faq.html#id4
-alias ssh="kitty +kitten ssh"
+# yt-dlp + deno
+alias yt-dlp="yt-dlp --js-runtimes deno:/opt/homebrew/bin/deno"
 # }}}
 
 # Theming {{{
 include $ZSH_CUSTOM/plugins/powerlevel10k/powerlevel10k.zsh-theme
 # To customize prompt, run `p10k configure` or edit ~/workspace/dotfiles/zsh/.p10k.zsh.
-include ~/workspace/dotfiles/zsh/.p10k.zsh
+[[ ! -f ~/workspace/dotfiles/zsh/.p10k.zsh ]] || source ~/workspace/dotfiles/zsh/.p10k.zsh
 # }}}
