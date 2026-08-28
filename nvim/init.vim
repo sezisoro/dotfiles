@@ -166,10 +166,8 @@ set list listchars=tab:»\ ,trail:°
 " }}}
 
 " {{{ TABBING & INDENTS
-set expandtab
-set smarttab
-set shiftwidth=2
-set tabstop=2
+set shiftwidth=4
+set tabstop=4
 set lbr
 set textwidth=80
 set ai
@@ -245,4 +243,3 @@ let g:netrw_browse_split = 3
 let g:netrw_winsize = 25
 " }}}
 
-call Include("$XDG_CONFIG_HOME/work/work.nvim")
