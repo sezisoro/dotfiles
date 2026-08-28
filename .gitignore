@@ -20,3 +20,5 @@ zsh/.zsh_sessions*
 zsh/.p10k.zsh
 zsh/custom/plugins
 zsh/custom/work.zsh-theme
+nvim/lazy-lock.json
+nvim/lazyvim.json

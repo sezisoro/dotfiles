@@ -1,0 +1,88 @@
+# Newsboat RRS feeds
+
+# {{{ Frontiers
+https://www.frontiersin.org/journals/psychiatry/rss
+https://www.frontiersin.org/journals/psychology/rss
+https://www.frontiersin.org/journals/signal-processing/rss
+https://www.frontiersin.org/journals/sociology/rss
+https://www.frontiersin.org/journals/systems-biology/rss
+https://www.frontiersin.org/journals/control-engineering/rss
+https://www.frontiersin.org/journals/systems-neuroscience/rss
+https://www.frontiersin.org/journals/political-science/rss
+https://www.frontiersin.org/journals/neuroinformatics/rss
+https://www.frontiersin.org/journals/neuroscience/rss
+https://www.frontiersin.org/journals/computational-neuroscience/rss
+https://www.frontiersin.org/journals/control-engineering/rss
+https://www.frontiersin.org/journals/communications-and-networks/rss
+https://www.frontiersin.org/journals/artificial-intelligence/rss
+# }}}
+
+# {{{ Culture
+https://autoanon.substack.com/feed
+https://bxwrites.substack.com/feed
+https://confrontingcapitalism.substack.com/feed
+https://djfuck.substack.com/feed
+https://drdevonprice.substack.com/feed
+https://esterfreider.substack.com/feed
+https://everyoneisagirl.substack.com/feed
+https://hydcore.substack.com/feed
+https://iamsavannahbrown.substack.com/feed
+https://internetprincess.substack.com/feed
+https://joshuacitarella.substack.com/feed
+https://julianmoran.substack.com/feed
+https://kyla.substack.com/feed
+https://matterbymatter.substack.com/feed
+https://moontower.substack.com/feed
+https://natashastagg.substack.com/feed
+https://ravenewworld.substack.com/feed
+https://raw.githubusercontent.com/xinyirenxinyi/eflux-rss-feed/refs/heads/main/feed.xml
+https://slavoj.substack.com/feed
+https://splitinfinities.substack.com/feed
+https://supamalaman.substack.com/feed
+https://www.greaterwrong.com/?format=rss
+# }}}
+
+# Philosophy
+https://deontologistics.substack.com/feed
+https://donotresearch.substack.com/feed
+https://newmodels.substack.com/feed
+https://noinvestigues.substack.com/feed
+https://tektology.substack.com/feed
+# }}}
+
+# {{{ Tech
+https://news.ycombinator.com/rss
+https://lcamtuf.substack.com/feed
+# }}}
+
+# {{{ Econ
+https://kaburbank.substack.com/feed
+https://michaeljburry.substack.com/feed
+https://www.commoditycontext.com/feed
+https://www.shrubstack.com/feed
+# }}}
+
+# {{{ Military
+https://bouhammer.com/feed/
+https://dmna.ny.gov/rss/
+https://english.chinamil.com.cn/rss.xml
+https://feeds.feedburner.com/strategy_bridge
+https://formerspook.blogspot.com/feeds/posts/default?alt=rss
+https://soldiersystems.net/feed/
+https://taskandpurpose.com/feed/
+https://www.army-technology.com/feed/
+https://www.centcom.mil/DesktopModules/ArticleCS/RSS.ashx?ContentType=1&Site=808&max=20/feed
+https://www.china-arms.com/feed/
+https://www.dodreads.com/feed/
+# }}}
+
+# {{{ Settings
+#ignore-mode "download" # Default: Delete them.
+#ignore-mode "display"  # Do not show them.
+# }}}
+
+# {{{ Scraped
+# TODO sez: write some quick scrapers
+#filter:~/.config/newsboat/html2rss.sh:https://becoming.press/immaterials
+#filter:~/.config/newsboat/html2rss.sh:https://www.spikeartmagazine.com/
+# }}}
