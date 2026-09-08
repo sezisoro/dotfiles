@@ -35,7 +35,7 @@ set convert-meta Off
 set output-meta On
 
 # none, visible or audible
-set bell-style none
+set bell-style visible
 
 # All of the following map the escape sequence of the 
 # value contained inside the 1st argument to the 
