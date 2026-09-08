@@ -4,14 +4,14 @@
 # open if connection remotely.
 
 if [[ -z "$TMUX" ]]; then
-  # Out-of-IDE terminals
-  if [[ -n "$SSH_TTY" ]] && [[ $- == *i* ]]; then
-    #TERM=xterm-256color && tmux new-session -A -s ssh_tmux
-    #exec tmux new-session -A -s ssh_tmux
-    tmux new-session -A -s ssh_tmux
-  else
-    tmux new-session -A -s lo_tmux
-  fi
+	# Out-of-IDE terminals
+	if [[ -n "$SSH_TTY" ]] && [[ $- == *i* ]]; then
+		#TERM=xterm-256color && tmux new-session -A -s ssh_tmux
+		#exec tmux new-session -A -s ssh_tmux
+		tmux new-session -A -s ssh_tmux
+	else
+		tmux new-session -A -s lo_tmux
+	fi
 else
-  #cat ~/.config/tmux/tmux.help
+	#cat ~/.config/tmux/tmux.help
 fi

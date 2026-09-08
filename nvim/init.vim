@@ -1,31 +1,31 @@
-" @file   NeoVim init.vim
+" @file		NeoVim init.vim
 "
-" @author Set Gary <leroyisgreat@gmail.com>
-" @date   27.08.2019
+" @author	sez
+" @date		2019.08.27
 "
 " Configuration for NeoVim, built from an old vimrc.
 
 " Include checks for file existence before sourcing.
 function Include(src)
-  if !empty(glob(a:src))
-    exec "source " . a:src
-  endif
+	if !empty(glob(a:src))
+		exec "source " . a:src
+	endif
 endfunction
 
 " {{{ History
 set history=500
 
 if has("autocmd")
-  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+	au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
 " }}}
 
 " {{{ Plugins
 " {{{ Plug
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
-  silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
-        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+	silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
+		\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
 call plug#begin('~/.config/nvim/plugged')
@@ -34,8 +34,8 @@ Plug 'edkolev/tmuxline.vim'
 Plug 'mbbill/undotree'
 Plug 'morhetz/gruvbox'
 Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope-file-browser.nvim'
-Plug 'nvim-telescope/telescope.nvim'
+"Plug 'nvim-telescope/telescope-file-browser.nvim'
+"Plug 'nvim-telescope/telescope.nvim'
 Plug 'prabirshrestha/asyncomplete-emoji.vim'
 Plug 'prabirshrestha/asyncomplete-file.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
@@ -49,11 +49,11 @@ call plug#end()
 
 " {{{ Tmuxline
 let g:tmuxline_preset = {
-      \'a'    : '#S',
-      \'b'    : '#W',
-      \'win'  : '#I #W',
-      \'cwin' : '#I #W',
-      \'z'    : '#H' }
+	\'a'	: '#S',
+	\'b'	: '#W',
+	\'win'	: '#I #W',
+	\'cwin'	: '#I #W',
+	\'z'	: '#H' }
 " }}}
 
 " Vim LSP {{{
@@ -61,17 +61,17 @@ let g:tmuxline_preset = {
 " WARNING: Might interfere with other completion plugins.
 "let g:lsp_async_completion = 1
 " Enable UI for diagnostics
-let g:lsp_signs_enabled = 1           " enable diagnostics signs in the gutter
-let g:lsp_diagnostics_echo_cursor = 1 " enable echo under cursor when in normal mode
+let g:lsp_signs_enabled = 1				" enable diagnostics signs in the gutter
+let g:lsp_diagnostics_echo_cursor = 1	" enable echo under cursor when in normal mode
 " }}}
 
 " Asyncomplete {{{
 au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#file#get_source_options({
-    \ 'name': 'file',
-    \ 'allowlist': ['*'],
-    \ 'priority': 10,
-    \ 'completor': function('asyncomplete#sources#file#completor')
-    \ }))
+	\ 'name': 'file',
+	\ 'allowlist': ['*'],
+	\ 'priority': 10,
+	\ 'completor': function('asyncomplete#sources#file#completor')
+	\ }))
 
 " Automatically show completion options
 let g:asyncomplete_auto_popup = 1
@@ -86,14 +86,14 @@ set completeopt=menuone,noinsert,noselect,preview
 
 " Keybindings 
 " TODO(sez): move
-inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <Tab>	 pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
+inoremap <expr> <cr>		pumvisible() ? asyncomplete#close_popup() : "\<cr>"
 "au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#emoji#get_source_options({
-"    \ 'name': 'emoji',
-"    \ 'allowlist': ['*'],
-"    \ 'completor': function('asyncomplete#sources#emoji#completor'),
-"    \ }))
+"	\ 'name': 'emoji',
+"	\ 'allowlist': ['*'],
+"	\ 'completor': function('asyncomplete#sources#emoji#completor'),
+"	\ }))
 " }}}
 
 filetype plugin on
@@ -176,21 +176,21 @@ set wrap
 set cinoptions=l1
 " }}}
 
-set fdm=marker    " Fold on triple-brace
-set splitright    " Split to the right by default
+set fdm=marker		" Fold on triple-brace
+set splitright		" Split to the right by default
 
 " {{{ Line Numbers
 "
 " Allows a user to press (Ctrl+N, Ctrl+N) to toggle relative or absolute line
 " numbers. Useful on some commands.
 function! NumberToggle()
-  if(&relativenumber == 1)
-    set nu
-    set rnu!
-  else
-    set rnu
-    set nu!
-  endif
+	if(&relativenumber == 1)
+		set nu
+		set rnu!
+	else
+		set rnu
+		set nu!
+	endif
 endfunc
 
 nnoremap <C-N><C-N> :call NumberToggle()<CR>
@@ -218,13 +218,13 @@ vnoremap <C-g> "hy:%s/<C-r>h//gc<left><left><left>
 
 " LSP/Async Autocomplete
 " gd in Normal mode triggers gotodefinition
-nnoremap gd   :LspDefinition<CR>
+nnoremap gd	 :LspDefinition<CR>
 " F4 in Normal mode shows all references
 nnoremap <F4> :LspReferences<CR>
 " Tab Completion
-inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <Tab>	 pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<CR>"
+inoremap <expr> <cr>		pumvisible() ? asyncomplete#close_popup() : "\<CR>"
 
 "Telescope
 nnoremap <leader>ff <cmd>Telescope find_files<CR>
