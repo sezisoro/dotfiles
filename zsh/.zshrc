@@ -7,7 +7,7 @@ function include() {
 # }}}
 
 # I'm switching to handling this on the connector side, in .ssh/config
-#include $XDG_CONFIG_HOME/zsh/.zlogin
+include $XDG_CONFIG_HOME/zsh/zlogin
 
 # Plugins {{{
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/workspace/dotfiles/zsh/.zshrc.
@@ -77,6 +77,7 @@ bindkey '^[^H'		backward-kill-line		# <C-A-backspace>
 bindkey '^[[3;7~'	kill-line				# <C-A-del>
 bindkey '^[[1~'		beginning-of-line		# <Home>
 bindkey '^[[4~'		end-of-line				# <End>
+#bindkey '\C-x\C-e'	edit-command-line
 
 bindkey '^R'		history-incremental-pattern-search-backward
 
@@ -102,11 +103,12 @@ fi
 # For a full list of active aliases, run `alias`.
 alias clr="clear"
 alias e="nvim"
-alias l='ls -CF'
-alias la='ls -A'
-alias ll='ls -alF'
+alias l="ls -CF"
+alias la="ls -A"
+alias ll="ls -alF"
 alias ls="ls --color"
 #alias ls="ls -F"
+alias mov="mv -i"
 alias oct="octave --no-gui"
 alias sudo="sudo -E "
 alias tm="tmux -f ~/.config/tmux/tmux.conf -2"
@@ -127,6 +129,8 @@ alias hgx="hg xl"
 # Beets
 alias bi="beet import -t"
 alias bl="beet list -f '\$albumartist: \$album -- \$path'"
+
+hash -d sb1=/seere-block-1
 # }}}
 
 # Theming {{{

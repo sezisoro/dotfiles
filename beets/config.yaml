@@ -1,0 +1,74 @@
+library: ~/.config/beets/library.db
+directory: /seere-block-1/library/music
+move: yes
+#copy: yes
+plugins: musicbrainz inline convert web edit fromfilename fetchart hook # lastgenre
+item_fields:
+  path_artist: |
+    if albumartist and not albumartist.lower().startswith("various"):
+      return albumartist
+    elif label:
+      return label
+    elif albumartist:
+      return albumartist
+    else:
+      return artist
+  path_format_pre: |
+    if format in ('AIFF', 'FLAC', 'WAV'):
+      return 'lossless'
+    else:
+      return 'lossy'
+album_fields:
+  rateinfo: |
+    from functools import reduce
+    formats = list(set(map(lambda i: i.format, items)))
+    bitdepths = list(set(map(lambda i: i.bitdepth, items)))
+    samplerates = list(set(map(lambda i: i.samplerate, items)))
+    bitrates = list(map(lambda i: i.bitrate, filter(lambda i: hasattr(i, 'bitrate'), items)))
+    avg_bitrate = reduce(lambda x,y: x+y, bitrates, 0) // len(bitrates)
+    if len(formats) > 1 or len(bitdepths) > 1 or len(samplerates) > 1:
+      return 'mixed'
+    elif formats[0] in ('AIFF', 'FLAC', 'WAV'):
+      return str(bitdepths[0]) + '-' + str(samplerates[0] // 1000)
+    else:
+      return str(avg_bitrate // 1000)
+paths:
+  default: $path_format_pre/$path_artist/$album ($format $rateinfo)%aunique{}/$track $title
+  singleton: $path_format_pre/$path_artist/$title
+  comp: $path_format_pre/$path_artist/$album ($format $rateinfo)%aunique{}/$track $title
+import:
+  bell: yes
+  incremental: no
+  log: /var/log/beets.log
+  quiet: no
+convert:
+  auto: no
+  delete_originals: false
+  dest: /seere-block-1/music/tmp
+  never_convert_lossy_files: yes
+  format: flac-default
+  formats:
+    aiff-default:
+      command: ffmpeg -i $source -y $dest
+      extension: aiff
+    aiff-44s16:
+      command: ffmpeg -i $source -ar 44100 -sample_fmt s16 -y $dest
+      extension: aiff
+    aiff-48s24:
+      command: ffmpeg -i $source -ar 48000 -sample_fmt s24 -y $dest
+      extension: aiff
+    flac-default:
+      command: ffmpeg -i $source -y $dest
+      extension: flac
+    flac-44s16:
+      command: ffmpeg -i $source -y -ca:a flac -ar 44100 -sample_fmt s16 -y $dest
+      extension: flac
+    flac-48s24:
+      command: ffmpeg -i $source -y -ca:a flac -ar 48000 -sample_fmt s24 -y $dest
+      extension: flac
+    mp3:
+      command: ffmpeg -i $source -y -vn -c:a libmp3lame -b:a 320k $dest
+      extension: mp3
+    opus:
+      command: ffmpeg -i $source -y -vn -c:a libopus -b:a 192k $dest
+      extension: opus
