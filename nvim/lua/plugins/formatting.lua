@@ -14,7 +14,8 @@ return {
 				'pydocstyle',
 				'stylua',
 				'typos',
-				'vale',
+				'rumdl',
+				--'vale',
 			},
 		},
 	},
@@ -63,18 +64,18 @@ return {
 			--opts.log_level = vim.log.levels.DEBUG
 			opts.formatters_by_ft = {
 				['*'] = { 'trim_whitespace' },
+				--rust = { "rustfmt" },
 				fish = { 'fish_indent' },
 				java = { 'google-java-format' },
 				lua = { 'stylua' },
+				markdown = { 'rumdl' },
 				python = { 'black', 'isort' },
-				--rust = { "rustfmt" },
 				sh = { 'shfmt' },
 				-- Web collection
 				css = { 'biome-check' },
 				html = { 'biome-check' },
 				javascript = { 'biome-check' },
 				json = { 'biome-check' },
-				markdown = { 'biome-check' },
 				typescript = { 'biome-check' },
 				yaml = { 'biome-check' },
 			}

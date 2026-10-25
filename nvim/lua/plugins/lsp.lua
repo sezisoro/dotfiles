@@ -4,7 +4,9 @@ return {
 		opts_extend = { 'ensure_installed' },
 		opts = {
 			ensure_installed = {
+				'biome',
 				'pyright',
+				'rumdl',
 				'stylua',
 			},
 		},
@@ -20,9 +22,11 @@ return {
 		opts_extend = { 'servers.*.keys' },
 		opts = {
 			servers = {
-				pyright = { enabled = true },
-				stylua = { enabled = true },
 				biome = { enabled = true },
+				pyright = { enabled = true },
+				rumdl = { enabled = true },
+				stylua = { enabled = true },
+				-- Begone
 				lua_ls = { enabled = false, mason = false },
 			},
 		},
