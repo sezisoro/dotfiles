@@ -1,5 +1,5 @@
 library: ~/.config/beets/library.db
-directory: /seere-block-1/library/music
+directory: /sb1/library/music
 move: yes
 #copy: yes
 plugins: musicbrainz inline convert web edit fromfilename fetchart hook # lastgenre
